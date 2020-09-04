@@ -1,7 +1,7 @@
-// write your custom hook here to control your checkout form
-
 import { useState } from "react";
+import useLocalStorage from "./useLocalStorage"
 
+const KEY = "React Plants: Shopping Cart"
 const initialValue = {
   firstName: "",
   lastName: "",
@@ -13,8 +13,8 @@ const initialValue = {
 
 const useForm = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [values, setValues] = useLocalStorage(KEY, initialValue);
 
-  const [values, setValues] = useState(initialValue);
   const handleChanges = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
